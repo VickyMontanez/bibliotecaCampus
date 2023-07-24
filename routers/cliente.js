@@ -10,12 +10,12 @@ appCliente.use((req, res, next) => {
     next();
 });
 
-// 11. List users and their emails.
+// 10. List users and their emails.
 appCliente.get("/", (req,res)=>{
     connection.query('SELECT id_usuario, nombre , email FROM usuario', (err, result) => {
         if (err) {
-            console.error("¡ERROR! I can't show you the users :(", err);
-            return res.status(500).json({ mensaje: "¡ERROR! I can't show you the users :(" });
+            console.error("¡ERROR! I can't show you the users with them emails :(", err);
+            return res.status(500).json({ mensaje: "¡ERROR! I can't show you the users with them emails :(" });
         };
         res.end(JSON.stringify(result))
     });
