@@ -26,4 +26,22 @@ appLibro.get("/", (req,res)=>{
     });
 });
 
+//8.Show the books available for loan with their title and author.
+appLibro.get("/disponibles", (req,res)=>{
+    connection.query(`
+        SELECT  l.titulo AS titulo, a.nombre AS autor, p.estado AS prestamo
+        FROM autor a 
+        INNER JOIN libro l
+        ON a.id_autor = l.id_autor
+        INNER JOIN prestamo p
+        ON l.id_libro = p.id_prestamo WHERE p.estado = "Devuelto"`, (err, result) => {
+        if (err) {
+            console.error("¡ERROR! I can't show you the info of the books available :(", err);
+            return res.status(500).json({ mensaje: "¡ERROR! I can't show you the info of the books available :(" });
+        };
+        res.end(JSON.stringify(result))
+    });
+});
+
+
 export default appLibro;
