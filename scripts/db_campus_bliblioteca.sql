@@ -163,6 +163,8 @@ INSERT INTO libro (id_libro, id_autor, id_categoria, id_editorial, titulo, anio_
 (9, 9, 2, 8, 'Cumbres borrascosas', 1847, '9788497940314', 479, 1),
 (10, 10, 1, 9, 'Ana Karenina', 1877, '9788420600283', 1273, 1);
 
+INSERT INTO libro (id_libro, id_autor, id_categoria, id_editorial, titulo, anio_publicacion, isbn, num_paginas, id_estado) VALUES (11, 1, 1, 1,'Crónica de una muerte anunciada', 2003, '9799879246', 564, 1);
+
 INSERT INTO usuario (id_usuario, nombre, apellido, direccion, telefono, email) VALUES
 (1, 'Juan', 'Pérez', 'Calle de los Libros, 456', '+1234567890', 'juan.perez@example.com'),
 (2, 'María', 'Gómez', 'Avenida de los Escritores, 789', '+9876543210', 'maria.gomez@example.com'),
