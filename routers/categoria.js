@@ -21,4 +21,20 @@ appCategoria.get("/", (req,res)=>{
     });
 });
 
+//12. Get the books of a certain category (example: Novel)
+appCategoria.get("/:name", (req, res)=>{
+    let categ = req.params.name;
+    connection.query(`
+        SELECT titulo AS libro, c.nombre AS categoria
+        FROM libro l
+        INNER JOIN categoria c ON l.id_categoria = c.id_categoria
+        WHERE c.nombre = ?`,
+        [categ], (err, result)=>{
+        if (err) {
+            console.error("¡ERROR! I can't show you the books on this category :(", err);
+            return res.status(500).json({ mensaje: "¡ERROR! I can't show you the books on this category :(" });
+        };
+        res.end(JSON.stringify(result))
+    });
+});
 export default appCategoria;
