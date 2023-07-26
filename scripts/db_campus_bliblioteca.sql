@@ -188,6 +188,9 @@ INSERT INTO prestamo (id_prestamo, id_usuario, id_libro, fecha_prestamo, fecha_d
 (8, 8, 1, '2023-07-17', '2023-07-24', 'Prestado'),
 (9, 9, 9, '2023-07-18', '2023-07-25', 'Prestado'),
 (10, 10, 6, '2023-07-19', '2023-07-26', 'Devuelto');
+INSERT INTO prestamo (id_prestamo, id_usuario, id_libro, fecha_prestamo, fecha_devolucion, estado) VALUES 
+(11, 1, 4, '2023-07-20','2023-07-26','Prestado'),
+(12, 1, 5, '2023-07-20','2023-07-26','Prestado');
 
 INSERT INTO reserva (id_reserva, id_usuario, id_libro, fecha_reserva, fecha_reserva_fin, estado) VALUES
 (1, 1, 3, '2023-07-10', '2023-07-17', 'Confirmada'),

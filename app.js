@@ -13,7 +13,7 @@ const appExpress = express();
 dotenv.config();
 
 appExpress.use(express.json());
-appExpress.use("/campus", appCliente);
+appExpress.use("/usuarios", appCliente);
 appExpress.use("/autores", appAutor);
 appExpress.use("/categorias", appCategoria);
 appExpress.use("/editoriales", appEditorial);

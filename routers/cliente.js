@@ -21,4 +21,22 @@ appCliente.get("/", (req,res)=>{
     });
 });
 
+//13.List the loans made by a user (example: John Perez).
+appCliente.get("/:id", (req, res)=>{
+    let user = req.params.id;
+    connection.query(`
+    SELECT p.id_prestamo, u.nombre, u.apellido, l.titulo, p.fecha_prestamo, p.estado
+    FROM libro l
+    INNER JOIN autor a ON l.id_autor = a.id_autor
+    INNER JOIN prestamo p ON l.id_libro = p.id_libro
+    INNER JOIN usuario u ON u.id_usuario = p.id_usuario WHERE u.id_usuario = ?`,
+    [user],(err, result)=>{
+        if (err) {
+            console.error("¡ERROR! I can't show you the user's interactions :(", err);
+            return res.status(500).json({ mensaje: "¡ERROR! I can't show you the user's interactions :(" });
+        };
+        res.end(JSON.stringify(result))
+    })
+})
+
 export default appCliente;
