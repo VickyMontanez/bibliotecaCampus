@@ -38,4 +38,16 @@ appAutor.get("/:id",(req, res)=>{
     });
 });
 
+//16. List the authors of Spanish nationality. 
+appAutor.get("/Español",(req, res)=>{
+    connection.query(`SELECT nombre, apellido FROM autor WHERE nacionalidad = 'Español'`,
+    (err, result) =>{
+        if (err) {
+            console.error("¡ERROR! No authors found :(", err);
+            return res.status(500).json({ mensaje: "¡ERROR! No authors found :(" });
+        };
+        res.end(result)
+    });
+});
+
 export default appAutor;
