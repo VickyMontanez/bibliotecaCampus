@@ -43,5 +43,19 @@ appLibro.get("/disponibles", (req,res)=>{
     });
 });
 
+//14. Show books with more than 500 pages and their author.
+appLibro.get("/500", (req,res)=>{
+    connection.query(`
+        SELECT l.titulo, a.nombre, a.apellido
+        FROM libro l
+        JOIN autor a ON l.id_autor = a.id_autor
+        WHERE l.num_paginas > 500`, (err, result) => {
+        if (err) {
+            console.error("¡ERROR! I can't show you the info of the books available :(", err);
+            return res.status(500).json({ mensaje: "¡ERROR! I can't show you the info of the books available :(" });
+        };
+        res.end(JSON.stringify(result))
+    });
+});
 
 export default appLibro;
